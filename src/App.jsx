@@ -4,6 +4,7 @@ import Header from './pages/Header'
 import Profile from './pages/profile'
 import Login from './pages/login'
 import Register from './pages/Register'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
                 <Route path='/login' element={ <Login/> }/>
                 <Route path='/register' element={ <Register/> }/>
             </Routes>
+            <Toaster />
         </BrowserRouter>
     )
 }
