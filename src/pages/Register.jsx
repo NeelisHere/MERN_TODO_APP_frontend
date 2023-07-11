@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { useStore } from '../store'
+import { useNavigate } from 'react-router-dom';
 
 const register_url = 'https://express-todo-app-api.onrender.com/api/v1/users/register'
 const req_config = {
@@ -16,19 +18,23 @@ const Register = () => {
         'password': ''
     })
 
+    const { setAuthStatus, loading, setLoading } = useStore((state) => state)
+    const navigate = useNavigate();
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        // console.log(userData)
+        setLoading(true)
         try {
             const { data } = await axios.post(register_url, userData, req_config) 
-            toast.success('Registered Successfully')
+            toast.success(data.message)
+            setAuthStatus(true)
+            navigate('/');
         } catch (error) {
-            toast.error('Error registering')
+            toast.error(error.response.data.message)
             console.log(error)
+            setAuthStatus(false)
         }
-        // 
-        
+        setLoading(false)
     }
 
     return (
@@ -56,7 +62,7 @@ const Register = () => {
                         onChange={(e)=>setUserData({...userData, password: e.target.value })}
                         required
                     />
-                    <button type="submit">Register</button>
+                    <button disabled={loading} type="submit">Register</button>
                     <h4>Already have an account?</h4>
                     <Link to={'/login'}>Login</Link>
                 </form>
