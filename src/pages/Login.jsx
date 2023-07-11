@@ -26,7 +26,7 @@ const Login = () => {
 		setLoading(true)
 		try {
 			const { data } = await axios.post(login_url, userData, req_config)
-			console.log(data)
+			// console.log(data)
 			toast.success(data.message)
 			setAuthStatus(true)
 			navigate('/');

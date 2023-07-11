@@ -11,9 +11,10 @@ import { useStore } from './store'
 
 const App = () => {
 
-	const {  setAuthStatus, setUser } = useStore((state)=>state)
+	const { setLoading, isAuthenticated, setAuthStatus, setUser } = useStore((state)=>state)
 
 	useEffect(() => {
+		setLoading(true)
 		axios.get('https://express-todo-app-api.onrender.com/api/v1/users/user-profile',{
 			withCredentials: true
 		}).then((res) => {
@@ -24,7 +25,8 @@ const App = () => {
 			setUser({})
 			setAuthStatus(false)
 		})
-	}, [])
+		setLoading(false)
+	}, [isAuthenticated])
 
     return (
         <BrowserRouter>
