@@ -3,6 +3,7 @@ import { useStore } from "../store"
 import axios from "axios"
 import { toast } from "react-hot-toast"
 import Task from "./Task"
+import { useNavigate } from "react-router-dom"
 
 const addTask_url = 'https://express-todo-app-api.onrender.com/api/v1/tasks/add-task'
 const getTask_url = 'https://express-todo-app-api.onrender.com/api/v1/tasks/my-tasks'
@@ -12,7 +13,7 @@ const Home = () => {
 	const [description, setDescription] = useState('')
 	const [tasks, setTasks] = useState([])
 
-	const { loading, setLoading } = useStore((state) => state)
+	const { isAuthenticated, loading, setLoading } = useStore((state) => state)
 
 	const submitHandler = async (e) => {
 		e.preventDefault()
@@ -64,6 +65,11 @@ const Home = () => {
 			toast.error(err.response.data.message)
 		})
 	}, [tasks])
+
+	const navigate = useNavigate()
+	if(!isAuthenticated){
+		navigate('/login')
+	}
 
 	return (
 		<div className="container">

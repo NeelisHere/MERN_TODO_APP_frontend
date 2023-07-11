@@ -1,12 +1,16 @@
+import { useNavigate } from "react-router-dom"
 import { useStore } from "../store"
-import loader from "./loader"
+import Loader from "./loader"
 
 const Profile = () => {
 	const { isAuthenticated, loading, user } = useStore(state => state)
-	console.log(user)
+	const navigate = useNavigate()
+	if(!isAuthenticated){
+		navigate('/login')
+	}
 	return (
 		loading? 
-		<loader />:
+		<Loader />:
 		<div>
 			<h1>{user?.username}</h1>
 			<p>{user?.email}</p>
