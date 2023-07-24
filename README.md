@@ -6,5 +6,8 @@ Backend - REST API built with Express framework on Node with MongoDB NoSQL datab
 ## Link to Backend Code:
 https://github.com/NeelisHere/BLOGGING_APP_v1.0_Backend
 
+## Link to Deployed Backend:
+https://express-todo-app-api.onrender.com
+
 ## Link to Deployed App:
 https://mern-todo-app-frontend-dvljts3hm-neelishere.vercel.app
