@@ -10,4 +10,5 @@ https://github.com/NeelisHere/BLOGGING_APP_v1.0_Backend
 https://express-todo-app-api.onrender.com
 
 ## Link to Deployed App:
+https://vercel.com/neelishere/mern-todo-app-frontend
 https://mern-todo-app-frontend-dvljts3hm-neelishere.vercel.app
