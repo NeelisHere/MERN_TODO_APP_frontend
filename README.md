@@ -7,4 +7,4 @@ Backend - REST API built with Express framework on Node with MongoDB NoSQL datab
 https://github.com/NeelisHere/BLOGGING_APP_v1.0_Backend
 
 ## Link to Deployed App:
-https://vercel.com/neelishere/mern-todo-app-frontend
+https://mern-todo-app-frontend-dvljts3hm-neelishere.vercel.app
